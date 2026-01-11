@@ -10,6 +10,9 @@ import lxml
 from odoo import fields, models
 from odoo.tools.func import lazy
 
+# Sentinel for default values (Odoo 19+ compatibility - fields.Default was removed)
+_DEFAULT = object()
+
 
 class JobSerialized(fields.Field):
     """Provide the storage for job fields stored as json
@@ -37,8 +40,12 @@ class JobSerialized(fields.Field):
         ),
     }
 
-    def __init__(self, string=fields.Default, base_type=fields.Default, **kwargs):
-        super().__init__(string=string, _base_type=base_type, **kwargs)
+    def __init__(self, string=_DEFAULT, base_type=_DEFAULT, **kwargs):
+        # Handle sentinel values for Odoo 19+ compatibility
+        init_kwargs = {"_base_type": base_type if base_type is not _DEFAULT else None}
+        if string is not _DEFAULT:
+            init_kwargs["string"] = string
+        super().__init__(**init_kwargs, **kwargs)
 
     def _setup_attrs(self, model, name):  # pylint: disable=missing-return
         super()._setup_attrs(model, name)

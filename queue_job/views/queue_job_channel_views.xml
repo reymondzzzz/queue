@@ -9,11 +9,13 @@
                 <group>
                     <field
                         name="name"
-                        attrs="{'required': [('name', '!=', 'root')], 'readonly': [('name', '=', 'root')]}"
+                        required="name != 'root'"
+                        readonly="name == 'root'"
                     />
                     <field
                         name="parent_id"
-                        attrs="{'required': [('name', '!=', 'root')], 'readonly': [('name', '=', 'root')]}"
+                        required="name != 'root'"
+                        readonly="name == 'root'"
                     />
                     <field name="complete_name" />
                     <field name="removal_interval" />
@@ -29,9 +31,9 @@
         <field name="name">queue.job.channel.tree</field>
         <field name="model">queue.job.channel</field>
         <field name="arch" type="xml">
-            <tree>
+            <list>
                 <field name="complete_name" />
-            </tree>
+            </list>
         </field>
     </record>
 

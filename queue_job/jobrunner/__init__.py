@@ -17,7 +17,8 @@ try:
     else:
         queue_job_config = {}
 except ImportError:
-    queue_job_config = config.misc.get("queue_job", {})
+    # Odoo 19+ removed config.misc - use empty dict as fallback
+    queue_job_config = getattr(config, 'misc', {}).get("queue_job", {})
 
 
 from .runner import QueueJobRunner, _channels

@@ -4,7 +4,7 @@
         <field name="name">queue.job.batch.tree</field>
         <field name="model">queue.job.batch</field>
         <field name="arch" type="xml">
-            <tree create="false" delete="false">
+            <list create="false" delete="false">
                 <field name="name" />
                 <field name="job_count" invisible="1" />
                 <field
@@ -14,7 +14,7 @@
                     options="{'current_value': 'finished_job_count', 'max_value': 'job_count'}"
                 />
                 <field name="state" />
-            </tree>
+            </list>
         </field>
     </record>
 
@@ -87,7 +87,7 @@
                     string="Finished"
                     domain="[('state', '=', 'finished')]"
                 />
-                <group expand="0" string="Group By">
+                <group>
                     <filter
                         name="group_by_state"
                         string="State"

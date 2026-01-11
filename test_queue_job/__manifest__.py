@@ -3,7 +3,7 @@
 
 {
     "name": "Queue Job Tests",
-    "version": "16.0.2.4.0",
+    "version": "19.0.2.4.0",
     "author": "Camptocamp,Odoo Community Association (OCA)",
     "license": "LGPL-3",
     "category": "Generic Modules",

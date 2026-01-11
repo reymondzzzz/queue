@@ -22,10 +22,10 @@
         <field name="name">queue.job.function.tree</field>
         <field name="model">queue.job.function</field>
         <field name="arch" type="xml">
-            <tree>
+            <list>
                 <field name="name" />
                 <field name="channel_id" />
-            </tree>
+            </list>
         </field>
     </record>
 
@@ -36,7 +36,7 @@
             <search string="Job Functions">
                 <field name="name" />
                 <field name="channel_id" />
-                <group expand="0" string="Group By">
+                <group>
                     <filter
                         name="group_by_channel"
                         string="Channel"
